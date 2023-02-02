@@ -26,7 +26,10 @@ func main() {
 	}))
 
 	app.Get("/", func(c *fiber.Ctx) error {
-		c.Redirect(url)
+		err := c.Redirect(url)
+		if err != nil {
+			return err
+		}
 		return nil
 	})
 
